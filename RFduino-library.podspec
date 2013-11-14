@@ -13,7 +13,6 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'Classes/**/*.{m,h}'
-  s.resources = 'Assets'
   s.public_header_files = 'Classes/**/*.h'
   s.frameworks = 'CoreBluetooth', 'Foundation'
 end

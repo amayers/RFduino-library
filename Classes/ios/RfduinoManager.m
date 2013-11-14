@@ -288,7 +288,7 @@ static CBUUID *service_uuid;
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)aCentral
 {
-    NSLog(@"central manager state = %ld", [central state]);
+    NSLog(@"central manager state = %ld", (long)[central state]);
     
     bool success = [self isBluetoothLESupported];
     if (success) {

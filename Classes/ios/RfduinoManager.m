@@ -250,7 +250,7 @@ static CBUUID *service_uuid;
     id manufacturerData = [advertisementData objectForKey:CBAdvertisementDataManufacturerDataKey];
     if (manufacturerData) {
         const uint8_t *bytes = [manufacturerData bytes];
-        int len = (int)[manufacturerData length];
+        NSUInteger len = [manufacturerData length];
         // skip manufacturer uuid
         NSData *data = [NSData dataWithBytes:bytes+2 length:len-2];
         rfduino.advertisementData = data;

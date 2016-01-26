@@ -98,12 +98,9 @@ static CBUUID *service_uuid;
             
     }
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bluetooth LE Support"
-                                                    message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+    if ([delegate respondsToSelector:@selector(centralManagerDidEncounterErrorWithMessage:andCode:)]) {
+        [delegate centralManagerDidEncounterErrorWithMessage:message andCode:[central state]];
+    }
     
     return NO;
 }
@@ -189,12 +186,9 @@ static CBUUID *service_uuid;
     if (error.code) {
         cancelBlock = block;
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Peripheral Disconnected with Error"
-                                                        message:error.description
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
+        if ([delegate respondsToSelector:@selector(peripheralDidDisconnectWithError:)]) {
+            [delegate peripheralDidDisconnectWithError:error];
+        }
     }
     else
         block();
@@ -273,13 +267,9 @@ static CBUUID *service_uuid;
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(NSError *)error
 {
     NSLog(@"didFailToConnectPeripheral");
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connect Failed"
-                                                    message:error.description
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
+    if ([delegate respondsToSelector:@selector(didFailToConnectWithError:)]) {
+        [delegate didFailToConnectWithError:error];
+    }
 }
 
 - (void)centralManager:(CBCentralManager *)central didRetrieveConnectedPeripherals:(NSArray *)peripherals

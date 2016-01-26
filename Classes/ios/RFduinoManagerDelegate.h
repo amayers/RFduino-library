@@ -39,5 +39,8 @@
 - (void)didConnectRFduino:(RFduino *)rfduino;
 - (void)didLoadServiceRFduino:(RFduino *)rfduino;
 - (void)didDisconnectRFduino:(RFduino *)rfduino;
+- (void)didFailToConnectWithError: (NSError *) error;
+- (void)peripheralDidDisconnectWithError: (NSError *) error;
+- (void)centralManagerDidEncounterErrorWithMessage: (NSString *) message andCode: (uint) errorCode;
 
 @end

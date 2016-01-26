@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RFduino-library"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "RFduino-library is a few classes to manage & communicate with RFduino boards over BlueTooth 4.0"
   s.description  = "This code provides an easy way to communicate with the RFduino boards. It originally came from https://github.com/RFduino/RFduino, but I have made a few minor changes."
   s.homepage     = "http://www.rfduino.com"
